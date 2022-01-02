@@ -25,11 +25,17 @@ public class JpaMain {
         // try-catch문으로 로직 구성하는 것이 정석이다.
         try {
 
-            Member member = em.find(Member.class, 150L);
-            member.setName("MemberZ");
+            Member member = new Member(200L, "member200");
+            em.persist(member);
 
-            // 컬렉션 다루듯이 객체를 조작한다. 즉, 다시 저장해서 할 필요가 없다.
-            // em.persist(member);
+            // 미리 db를 보고 싶거나 쿼리를 보고 싶으면
+            em.flush(); // 강제 호출
+
+//            Member member = em.find(Member.class, 150L);
+//            member.setName("MemberZ");
+
+//             컬렉션 다루듯이 객체를 조작한다. 즉, 다시 저장해서 할 필요가 없다.
+//             em.persist(member);
 
 
 //            Member member1 = new Member(150L, "MemberA");
