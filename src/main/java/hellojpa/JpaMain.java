@@ -25,13 +25,13 @@ public class JpaMain {
         // try-catch문으로 로직 구성하는 것이 정석이다.
         try {
 
-//            Member member = em.find(Member.class, 150L);
-//            member.setName("AAAAAA");
-//
-//            // em.detach(member);   //준영속 상태
-//            em.clear(); //em 안에 영속성 컨텍스트와 1차 캐시를 통째로 다 지운다.
-//            Member member2 = em.find(Member.class, 150L);   // 다시 조회
-//            System.out.println("===================");
+            Member member = em.find(Member.class, 150L);
+            member.setName("AAAAAA");
+
+            // em.detach(member);   //준영속 상태
+            em.clear(); //em 안에 영속성 컨텍스트와 1차 캐시를 통째로 다 지운다.
+            Member member2 = em.find(Member.class, 150L);   // 다시 조회
+            System.out.println("===================");
 
 //            Member member = new Member(200L, "member200");
 //            em.persist(member);
