@@ -1,28 +1,35 @@
 package hellojpa;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
-@Table(name = "MBR")    // MBR이라는 테이블과 매핑
 public class Member {
 
     @Id
     private Long id;
-    private String name;
 
-    // JPA에서는 기본적으로 내부적 리플렉션이나 사용되기 때문에 동적으로 객체를 생성해야 하므로
-    // 기본 생성자가 있어야 한다.
+    @Column(name = "name", nullable = false)
+    private String username;
 
-    public Member(){
+    private int age;
 
-    }
+    @Enumerated(EnumType.STRING)
+    private RoleType roleType;
 
-    public Member(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastModifiedDate;
+
+    @Lob
+    private String description;
+
+    //Getter, Setter…
+
 
     public Long getId() {
         return id;
@@ -31,11 +38,52 @@ public class Member {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getName() {
-        return name;
+
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public RoleType getRoleType() {
+        return roleType;
+    }
+
+    public void setRoleType(RoleType roleType) {
+        this.roleType = roleType;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Date getLastModifiedDate() {
+        return lastModifiedDate;
+    }
+
+    public void setLastModifiedDate(Date lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
